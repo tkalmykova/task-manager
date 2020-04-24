@@ -7,7 +7,7 @@ FactoryBot.define do
       author { create(:user, :manager) }
     end
 
-    trait :assignee do
+    trait :with_assignee do
       assignee { create(:user, :developer) }
     end
   end
