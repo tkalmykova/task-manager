@@ -4,17 +4,16 @@ FactoryBot.define do
     last_name
     email
     password
-    type { 'User' }
 
-    trait :admin do
+    factory :admin do
       type { 'Admin' }
     end
 
-    trait :manager do
+    factory :manager do
       type { 'Manager' }
     end
 
-    trait :developer do
+    factory :developer do
       type { 'Developer' }
     end
   end
