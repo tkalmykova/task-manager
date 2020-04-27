@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :task do
     name
-    description { generate(:string) }
+    description
 
     trait :with_author do
       author { create(:user, :manager) }
