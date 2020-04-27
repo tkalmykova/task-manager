@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    first_name { generate(:string) }
-    last_name { generate(:string) }
-    email { generate(:email) }
+    first_name
+    last_name
+    email
     password
     type { 'User' }
 

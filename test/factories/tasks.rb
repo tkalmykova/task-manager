@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :task do
-    name { generate(:string) }
+    name
     description { generate(:string) }
 
     trait :with_author do
