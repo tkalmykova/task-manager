@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class Web::DevelopersControllerTest < ActionController::TestCase
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
-
   end
 
-  test "should post create" do
+  test 'should post create' do
     attrs = attributes_for(:developer)
     post :create, params: { developer: attrs }
     assert_response :redirect

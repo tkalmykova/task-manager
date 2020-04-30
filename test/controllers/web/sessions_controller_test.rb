@@ -8,12 +8,12 @@ class Web::SessionsControllerTest < ActionController::TestCase
     @user = create(:user, { password: @password })
   end
 
-  test "should get new" do
+  test 'should get new' do
     get :new
     assert_response :success
   end
 
-  test "should post create" do
+  test 'should post create' do
     attrs = {
       email: @user.email,
       password: @password
@@ -25,7 +25,7 @@ class Web::SessionsControllerTest < ActionController::TestCase
     assert current_user == @user
   end
 
-  test "should delete destroy" do
+  test 'should delete destroy' do
     sign_in(@user)
 
     delete :destroy
