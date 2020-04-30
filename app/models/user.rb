@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
   has_many :my_tasks, class_name: 'Task', foreign_key: :author_id

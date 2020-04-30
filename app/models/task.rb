@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Task < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :assignee, class_name: 'User', optional: true
@@ -17,7 +19,7 @@ class Task < ApplicationRecord
     state :released
 
     event :put_in_development do
-      transition [:new_task, :in_qa, :in_code_review] => :in_development
+      transition %i[new_task in_qa in_code_review] => :in_development
     end
 
     event :put_in_qa do
@@ -37,7 +39,7 @@ class Task < ApplicationRecord
     end
 
     event :put_in_archived do
-      transition [:new_task, :released] => :archived
+      transition %i[new_task released] => :archived
     end
   end
 end

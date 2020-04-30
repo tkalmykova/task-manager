@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/migrate/**/*
+    - db/schema.rb
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 30
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
