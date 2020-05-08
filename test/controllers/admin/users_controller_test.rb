@@ -20,9 +20,15 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   test 'should post create' do
-    user = attributes_for(:user)
+    user_attributes = attributes_for(:user)
     post :create, params: { user: user }
     assert_response :redirect
+
+    assert_difference 'User.count', 1 do
+      post :create, params: { user: user_attributes }
+    end
+
+    created_user = Users.find_by(email: user_attributes[:email])
   end
 
   test 'should patch update' do
@@ -30,11 +36,20 @@ class Admin::UsersControllerTest < ActionController::TestCase
     user_attrs = attributes_for(:user)
     patch :update, params: { id: user.id, user: user_attrs }
     assert_response :redirect
-  end
+    user.reload
+    assert_equal "updated"
+   end
 
   test 'should delete destroy' do
     user = create(:user)
-    delete :destroy, params: { id: user.id }
+    assert_difference('Users.count', -1) do
+      delete :destroy, params: { id: user.id }
+    end
     assert_response :redirect
   end
 end
+
+
+
+users email
+chek email and attr
