@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Api::V1::ApplicationController < Api::ApplicationController
+  include AuthHelper
+
   RANSACK_DEFAULT_SORT = 'id ASC'
 
   def build_meta(collection)
@@ -27,6 +29,6 @@ class Api::V1::ApplicationController < Api::ApplicationController
   end
 
   def self.responder
-    JsonResponder
+    Responders::JsonResponder
   end
 end

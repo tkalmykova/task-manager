@@ -1,4 +1,6 @@
-class JsonResponder < ActionController::Responder
+# frozen_string_literal: true
+
+class Responders::JsonResponder < ActionController::Responder
   def api_behavior(*args, &block)
     if post?
       display(resource, status: :created)

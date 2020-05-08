@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TaskSerializer < ApplicationSerializer
   attributes :id, :name, :description, :state, :expired_at, :transitions
   belongs_to :author
@@ -8,7 +10,7 @@ class TaskSerializer < ApplicationSerializer
       {
         event: transiion.event,
         from: transiion.from,
-        to: transiion.to,
+        to: transiion.to
       }
     end
   end
