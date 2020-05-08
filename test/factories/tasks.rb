@@ -6,11 +6,11 @@ FactoryBot.define do
     description
 
     trait :with_author do
-      author { create(:user, :manager) }
+      author { create(:manager) }
     end
 
     trait :with_assignee do
-      assignee { create(:user, :developer) }
+      assignee { create(:developer) }
     end
   end
 end

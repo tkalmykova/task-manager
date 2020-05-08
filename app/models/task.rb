@@ -19,7 +19,7 @@ class Task < ApplicationRecord
     state :released
 
     event :put_in_development do
-      transition %i[new_task in_qa in_code_review] => :in_development
+      transition [:new_task, :in_qa, :in_code_review] => :in_development
     end
 
     event :put_in_qa do
@@ -39,7 +39,7 @@ class Task < ApplicationRecord
     end
 
     event :put_in_archived do
-      transition %i[new_task released] => :archived
+      transition [:new_task, :released] => :archived
     end
   end
 end
