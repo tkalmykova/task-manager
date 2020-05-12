@@ -9,18 +9,18 @@ class Web::DevelopersController < Web::ApplicationController
     @developer = Developer.new(developer_params)
 
     if @developer.save
-      sign_in @developer
-      redirect_to :board
+      sign_in(@developer)
+      redirect_to(:board)
     else
-      render :new
+      render(:new)
     end
   end
 
   private
 
   def developer_params
-    params
-      .require(:developer)
-      .permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.
+      require(:developer).
+      permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 end
