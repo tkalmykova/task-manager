@@ -12,4 +12,5 @@ FactoryBot.define do
     trait :with_assignee do
       assignee factory: :developer
     end
+  end
 end
