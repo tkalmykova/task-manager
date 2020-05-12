@@ -20,6 +20,7 @@ gem 'slim-rails'
 gem 'state_machines'
 gem 'state_machines-activerecord'
 gem 'webpacker', '~> 4.0'
+gem 'webpacker-react'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
