@@ -28,7 +28,6 @@ class Api::V1::TasksControllerTest < ActionController::TestCase
     created_task = Task.find(data['task']['id'])
 
     assert created_task.present?
-    byebug
     assert_equal task_attributes.stringify_keys, created_task.slice(*task_attributes.keys)
   end
 
