@@ -38,30 +38,26 @@ const ColumnHeader = ({ column, onLoadMore }) => {
 
 ColumnHeader.propTypes = {
   column: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    cards: PropTypes.array,
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.oneOfType([
+      PropTypes.shape(),
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          name: PropTypes.string.isRequired,
+          state: PropTypes.string.isRequired,
+          description: PropTypes.string.isRequired,
+        }),
+      ),
+    ]).isRequired,
     meta: PropTypes.shape({
       totalCount: PropTypes.number,
       currentPage: PropTypes.number,
       totalPages: PropTypes.number,
-    }),
-  }),
-  onLoadMore: PropTypes.func,
-};
-
-ColumnHeader.defaultProps = {
-  column: PropTypes.shape({
-    id: 0,
-    title: ' ',
-    cards: [],
-    meta: PropTypes.shape({
-      totalCount: 0,
-      currentPage: 0,
-      totalPages: 0,
-    }),
-  }),
-  onLoadMore: () => {},
+    }).isRequired,
+  }).isRequired,
+  onLoadMore: PropTypes.func.isRequired,
 };
 
 export default ColumnHeader;
