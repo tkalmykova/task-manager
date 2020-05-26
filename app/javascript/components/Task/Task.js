@@ -7,7 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './useStyles';
 
-//  const action = ();
 const Task = ({ task, onClick }) => {
   const handleClick = () => onClick(task);
   const styles = useStyles;
