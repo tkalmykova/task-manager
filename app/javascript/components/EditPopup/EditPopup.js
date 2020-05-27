@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'ramda';
+import { has } from 'ramda';
 import Modal from '@material-ui/core/Modal';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import UserSelect from 'components/UserSelect';
 
 import Form from './components/Form';
 
@@ -47,8 +49,9 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
       alert(`Destrucion Failed! Error: ${error.message}`);
     });
   };
+  const handleChangeSelect = (fieldName) => (user) => setTask({ ...task, [fieldName]: user });
   const isLoading = isNil(task);
-
+  debugger;
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -88,6 +91,15 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
           >
             Destroy
           </Button>
+          <UserSelect
+            label="Author"
+            value={task.author}
+            onChange={handleChangeSelect('author')}
+            isDisabled
+            isRequired
+            error={has('author', errors)}
+            helperText={errors.author}
+          />
         </CardActions>
       </Card>
     </Modal>

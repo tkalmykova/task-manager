@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { has } from 'ramda';
 
 import TextField from '@material-ui/core/TextField';
-
 import useStyles from './useStyles';
 
 const Form = ({ errors, onChange, task }) => {
