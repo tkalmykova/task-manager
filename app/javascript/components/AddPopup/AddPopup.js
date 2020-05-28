@@ -11,6 +11,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
 import TextField from '@material-ui/core/TextField';
+import UserSelect from 'components/UserSelect';
+import { isNil } from 'ramda';
 
 import TaskForm from 'forms/TaskForm';
 
@@ -34,6 +36,8 @@ const AddPopup = ({ onClose, onCreateCard }) => {
   };
   const handleChangeTextField = (fieldName) => (event) => changeTask({ ...task, [fieldName]: event.target.value });
   const styles = useStyles();
+  const isLoading = isNil(task);
+  const handleChangeSelect = (fieldName) => (user) => changeTask({ ...task, [fieldName]: user });
 
   return (
     <Modal className={styles.modal} open onClose={onClose}>
@@ -65,6 +69,16 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               label="Description"
               required
               margin="dense"
+            />
+            <UserSelect
+              label="Author"
+              value={isLoading ? null : task.author}
+              onChange={handleChangeSelect('author')}
+              isDisabled={isLoading || isSaving}
+              isRequired
+              error={has('author', errors)}
+              helperText={errors.author}
+              isClearable
             />
           </div>
         </CardContent>
