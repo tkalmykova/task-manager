@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import AsyncSelect from 'react-select/async';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -35,6 +34,7 @@ const UserSelect = ({ error, label, isClearable, isDisabled, isRequired, onChang
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             menuPortalTarget={document.body}
+            helperText
             styles={{ menuPortal: (base) => ({ ...base, zIndex: 9999 }) }}
           />
         </div>
@@ -51,8 +51,12 @@ UserSelect.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
   isRequired: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.shape().isRequired,
-  helperText: PropTypes.string.isRequired,
+  value: PropTypes.shape(),
+  helperText: PropTypes.string,
+};
+UserSelect.defaultProps = {
+  helperText: ' ',
+  value: null,
 };
 
 export default UserSelect;

@@ -46,12 +46,11 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
     onCardDestroy(task).catch((error) => {
       setSaving(false);
 
-      alert(`Destrucion Failed! Error: ${error.message}`);
+      alert(`Destruction Failed! Error: ${error.message}`);
     });
   };
-  const handleChangeSelect = (fieldName) => (user) => setTask({ ...task, [fieldName]: user });
   const isLoading = isNil(task);
-  debugger;
+  const handleChangeSelect = (fieldName) => (user) => setTask({ ...task, [fieldName]: user });
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -69,7 +68,19 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <CircularProgress />
             </div>
           ) : (
-            <Form errors={errors} onChange={setTask} task={task} />
+            <>
+              <Form errors={errors} onChange={setTask} task={task} />
+              <UserSelect
+                label="Author"
+                value={isLoading ? null : task.author}
+                onChange={handleChangeSelect('author')}
+                isDisabled={isLoading || isSaving}
+                isRequired
+                error={has('author', errors)}
+                helperText={errors.author}
+                isClearable
+              />
+            </>
           )}
         </CardContent>
         <CardActions className={styles.actions}>
@@ -91,15 +102,6 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
           >
             Destroy
           </Button>
-          <UserSelect
-            label="Author"
-            value={task.author}
-            onChange={handleChangeSelect('author')}
-            isDisabled
-            isRequired
-            error={has('author', errors)}
-            helperText={errors.author}
-          />
         </CardActions>
       </Card>
     </Modal>
