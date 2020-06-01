@@ -34,11 +34,11 @@ const AddPopup = ({ onClose, onCreateCard }) => {
       }
     });
   };
+
   const handleChangeTextField = (fieldName) => (event) => changeTask({ ...task, [fieldName]: event.target.value });
   const styles = useStyles();
   const isLoading = isNil(task);
   const handleChangeSelect = (fieldName) => (user) => changeTask({ ...task, [fieldName]: user });
-
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -77,7 +77,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               isDisabled={isLoading || isSaving}
               isRequired
               error={has('author', errors)}
-              helperText={errors.author}
+              helperText={errors.author && errors.author.join(', ')}
               isClearable
             />
             <UserSelect
@@ -87,7 +87,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               isDisabled={isLoading || isSaving}
               isRequired
               error={has('assignee', errors)}
-              helperText={errors.assignee}
+              helperText={errors.assignee && errors.assignee.join(', ')}
               isClearable
             />
           </div>

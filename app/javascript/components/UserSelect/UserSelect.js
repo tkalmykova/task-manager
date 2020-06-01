@@ -56,7 +56,7 @@ UserSelect.propTypes = {
   helperText: PropTypes.string,
 };
 UserSelect.defaultProps = {
-  helperText: ' ',
+  helperText: null,
   value: null,
 };
 

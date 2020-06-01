@@ -77,7 +77,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
                 isDisabled={isLoading || isSaving}
                 isRequired
                 error={has('author', errors)}
-                helperText={errors.author}
+                helperText={errors.author && errors.author.join(', ')}
                 isClearable
               />
               <UserSelect
