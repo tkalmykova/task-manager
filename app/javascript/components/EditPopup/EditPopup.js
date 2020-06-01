@@ -80,6 +80,16 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
                 helperText={errors.author}
                 isClearable
               />
+              <UserSelect
+                label="Assignee"
+                value={isLoading ? null : task.assignee}
+                onChange={handleChangeSelect('assignee')}
+                isDisabled={isLoading || isSaving}
+                isRequired
+                error={has('assignee', errors)}
+                helperText={errors.assignee}
+                isClearable
+              />
             </>
           )}
         </CardContent>

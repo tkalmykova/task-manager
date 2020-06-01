@@ -80,6 +80,16 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               helperText={errors.author}
               isClearable
             />
+            <UserSelect
+              label="Assignee"
+              value={isLoading ? null : task.assignee}
+              onChange={handleChangeSelect('assignee')}
+              isDisabled={isLoading || isSaving}
+              isRequired
+              error={has('assignee', errors)}
+              helperText={errors.assignee}
+              isClearable
+            />
           </div>
         </CardContent>
         <CardActions className={styles.actions}>
