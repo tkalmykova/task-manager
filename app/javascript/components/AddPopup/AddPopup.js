@@ -17,6 +17,7 @@ import { isNil } from 'ramda';
 import TaskForm from 'forms/TaskForm';
 
 import useStyles from './useStyles';
+import TaskPresenter from '../../presenters/TaskPresenter';
 
 const AddPopup = ({ onClose, onCreateCard }) => {
   const [task, changeTask] = useState(TaskForm.defaultAttributes());
@@ -56,7 +57,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               error={has('name', errors)}
               helperText={errors.name}
               onChange={handleChangeTextField('name')}
-              value={task.name}
+              value={TaskPresenter.name}
               label="Name"
               required
               margin="dense"
@@ -65,14 +66,14 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               error={has('description', errors)}
               helperText={errors.description}
               onChange={handleChangeTextField('description')}
-              value={task.description}
+              value={TaskPresenter.description}
               label="Description"
               required
               margin="dense"
             />
             <UserSelect
               label="Author"
-              value={isLoading ? null : task.author}
+              value={isLoading ? null : TaskPresenter.author}
               onChange={handleChangeSelect('author')}
               isDisabled={isLoading || isSaving}
               isRequired
@@ -82,7 +83,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
             />
             <UserSelect
               label="Assignee"
-              value={isLoading ? null : task.assignee}
+              value={isLoading ? null : TaskPresenter.assignee}
               onChange={handleChangeSelect('assignee')}
               isDisabled={isLoading || isSaving}
               isRequired

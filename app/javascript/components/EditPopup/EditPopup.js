@@ -16,6 +16,7 @@ import UserSelect from 'components/UserSelect';
 import Form from './components/Form';
 
 import useStyles from './useStyles';
+import TaskPresenter from '../../presenters/TaskPresenter';
 
 const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate }) => {
   const [task, setTask] = useState(null);
@@ -60,7 +61,11 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <CloseIcon />
             </IconButton>
           }
-          title={isLoading ? 'Your task is loading. Please be patient.' : `Task # ${task.id} [${task.name}]`}
+          title={
+            isLoading
+              ? 'Your task is loading. Please be patient.'
+              : `Task # ${TaskPresenter.id} [${TaskPresenter.name}]`
+          }
         />
         <CardContent>
           {isLoading ? (
@@ -72,7 +77,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <Form errors={errors} onChange={setTask} task={task} />
               <UserSelect
                 label="Author"
-                value={isLoading ? null : task.author}
+                value={isLoading ? null : TaskPresenter.author}
                 onChange={handleChangeSelect('author')}
                 isDisabled={isLoading || isSaving}
                 isRequired
@@ -82,7 +87,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               />
               <UserSelect
                 label="Assignee"
-                value={isLoading ? null : task.assignee}
+                value={isLoading ? null : TaskPresenter.assignee}
                 onChange={handleChangeSelect('assignee')}
                 isDisabled={isLoading || isSaving}
                 isRequired

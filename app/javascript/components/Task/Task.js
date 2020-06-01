@@ -6,6 +6,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './useStyles';
+import TaskPresenter from '../../presenters/TaskPresenter';
 
 const Task = ({ task, onClick }) => {
   const handleClick = () => onClick(task);
@@ -13,10 +14,10 @@ const Task = ({ task, onClick }) => {
 
   return (
     <Card className={styles.root} onClick={handleClick}>
-      <CardHeader title={task.name} />
+      <CardHeader title={TaskPresenter.name} />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {task.description}
+          {TaskPresenter.description}
         </Typography>
       </CardContent>
     </Card>
