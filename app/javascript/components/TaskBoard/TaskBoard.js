@@ -11,7 +11,6 @@ import EditPopup from 'components/EditPopup';
 import Task from 'components/Task';
 import TasksRepository from 'repositories/TasksRepository';
 import ColumnHeader from 'components/ColumnHeader';
-import TaskPresenter from '../../presenters/TaskPresenter';
 
 const STATES = [
   { key: 'new_task', value: 'New' },
@@ -86,12 +85,12 @@ const TaskBoard = () => {
   };
 
   const handleCardDragEnd = (task, source, destination) => {
-    const transition = TaskPresenter.transitions(task).find(({ to }) => destination.toColumnId === to);
+    const transition = task.transitions.find(({ to }) => destination.toColumnId === to);
     if (!transition) {
       return null;
     }
 
-    return TasksRepository.update(TaskPresenter.id(task), { stateEvent: transition.event })
+    return TasksRepository.update(task.id, { stateEvent: transition.event })
       .then(() => {
         loadColumnInitial(destination.toColumnId);
         loadColumnInitial(source.fromColumnId);
@@ -124,20 +123,20 @@ const TaskBoard = () => {
     const attributes = TaskForm.attributesToSubmit(task);
 
     return TasksRepository.update(task.id, attributes).then(() => {
-      loadColumnInitial(TaskPresenter.state(task));
+      loadColumnInitial(task.state);
       handleClose();
     });
   };
 
   const handleTaskDestroy = (task) => {
-    return TasksRepository.destroy(TaskPresenter.id(task)).then(() => {
-      loadColumnInitial(TaskPresenter.state(task));
+    return TasksRepository.destroy(task.id).then(() => {
+      loadColumnInitial(task.state);
       handleClose();
     });
   };
 
   const handleOpenEditPopup = (task) => {
-    setOpenedTaskId(TaskPresenter.id(task));
+    setOpenedTaskId(task.id);
     setMode(MODES.EDIT);
   };
 
@@ -148,7 +147,7 @@ const TaskBoard = () => {
   const handleTaskCreate = (params) => {
     const attributes = TaskForm.attributesToSubmit(params);
     return TasksRepository.create(attributes).then(({ data: { task } }) => {
-      loadColumnInitial(TaskPresenter.state(task));
+      loadColumnInitial(task.state);
       handleClose();
     });
   };
