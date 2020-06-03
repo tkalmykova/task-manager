@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+## Travis
+[![Build Status](https://travis-ci.com/tkalmykova/task-manager.svg?branch=develop)](https://travis-ci.com/tkalmykova/task-manager)

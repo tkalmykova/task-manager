@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 require 'test helper'
+
 
 class Api::V1::UsersControllerTest < ActionController::TestCase
   test "should get show" do
