@@ -75,7 +75,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
           ) : (
             <>
               <Form errors={errors} onChange={setTask} task={task} />
-              <UserSelect
+              {/* <UserSelect
                 label="Author"
                 value={isLoading ? null : task.author}
                 onChange={handleChangeSelect('author')}
@@ -84,7 +84,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
                 error={has('author', errors)}
                 helperText={errors.author && errors.author.join(', ')}
                 isClearable
-              />
+              /> */}
               <UserSelect
                 label="Assignee"
                 value={isLoading ? null : task.assignee}

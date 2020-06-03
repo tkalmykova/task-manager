@@ -71,7 +71,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               required
               margin="dense"
             />
-            <UserSelect
+            {/* <UserSelect
               label="Author"
               value={isLoading ? null : task.author}
               onChange={handleChangeSelect('author')}
@@ -80,7 +80,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
               error={has('author', errors)}
               helperText={errors.author && errors.author.join(', ')}
               isClearable
-            />
+            /> */}
             <UserSelect
               label="Assignee"
               value={isLoading ? null : task.assignee}
