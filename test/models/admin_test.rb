@@ -1,4 +1,5 @@
 require 'test_helper'
+import 'material-design-lite/material.js';
 
 class AdminTest < ActiveSupport::TestCase
   test 'create' do

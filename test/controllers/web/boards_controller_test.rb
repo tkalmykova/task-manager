@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+import 'material-design-lite/material.js';
 
 class Web::BoardsControllerTest < ActionController::TestCase
   setup do

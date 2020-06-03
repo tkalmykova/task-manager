@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-
+import 'material-design-lite/material.js';
 class Web::DevelopersControllerTest < ActionController::TestCase
   test 'should get new' do
     get :new
