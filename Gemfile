@@ -22,6 +22,8 @@ gem 'state_machines-activerecord'
 gem 'webpacker', '~> 4.0'
 gem 'webpacker-react'
 gem 'js-routes'
+gem 'coveralls', require: false
+gem 'simplecov', require: false, group: :test
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
