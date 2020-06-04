@@ -49,13 +49,14 @@ UserSelect.propTypes = {
   error: PropTypes.bool.isRequired,
   label: PropTypes.string.isRequired,
   isClearable: PropTypes.bool.isRequired,
-  isDisabled: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
   isRequired: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.shape().isRequired]),
   helperText: PropTypes.string,
 };
 UserSelect.defaultProps = {
+  isDisabled: false,
   helperText: null,
   value: null,
 };

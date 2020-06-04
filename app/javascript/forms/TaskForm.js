@@ -3,10 +3,10 @@ import { pick, propOr } from 'ramda';
 export default {
   defaultAttributes(attributes) {
     return {
-      name: '',
-      description: '',
-      author: '',
-      assignee: '',
+      name: null,
+      description: null,
+      author: null,
+      assignee: null,
       ...attributes,
     };
   },

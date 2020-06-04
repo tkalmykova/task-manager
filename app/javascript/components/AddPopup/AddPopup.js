@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { has } from 'ramda';
+import Form from 'components/EditPopup/components/Form';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -10,17 +10,12 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 import Modal from '@material-ui/core/Modal';
-import TextField from '@material-ui/core/TextField';
-import UserSelect from 'components/UserSelect';
-import { isNil } from 'ramda';
-
 import TaskForm from 'forms/TaskForm';
-import TaskPresenter from 'presenters/TaskPresenter';
 
 import useStyles from './useStyles';
 
 const AddPopup = ({ onClose, onCreateCard }) => {
-  const [task, changeTask] = useState(TaskForm.defaultAttributes());
+  const [task, setTask] = useState(TaskForm.defaultAttributes());
   const [isSaving, setSaving] = useState(false);
   const [errors, setErrors] = useState({});
   const handleCreate = () => {
@@ -36,10 +31,8 @@ const AddPopup = ({ onClose, onCreateCard }) => {
     });
   };
 
-  const handleChangeTextField = (fieldName) => (event) => changeTask({ ...task, [fieldName]: event.target.value });
   const styles = useStyles();
-  const isLoading = isNil(task);
-  const handleChangeSelect = (fieldName) => (user) => changeTask({ ...task, [fieldName]: user });
+
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -53,44 +46,7 @@ const AddPopup = ({ onClose, onCreateCard }) => {
         />
         <CardContent>
           <div className={styles.form}>
-            <TextField
-              error={has('name', errors)}
-              helperText={errors.name}
-              onChange={handleChangeTextField('name')}
-              value={TaskPresenter.name(task)}
-              label="Name"
-              required
-              margin="dense"
-            />
-            <TextField
-              error={has('description', errors)}
-              helperText={errors.description}
-              onChange={handleChangeTextField('description')}
-              value={TaskPresenter.description(task)}
-              label="Description"
-              required
-              margin="dense"
-            />
-            {/* <UserSelect
-              label="Author"
-              value={isLoading ? null : task.author}
-              onChange={handleChangeSelect('author')}
-              isDisabled={isLoading || isSaving}
-              isRequired
-              error={has('author', errors)}
-              helperText={errors.author && errors.author.join(', ')}
-              isClearable
-            /> */}
-            <UserSelect
-              label="Assignee"
-              value={isLoading ? null : task.assignee}
-              onChange={handleChangeSelect('assignee')}
-              isDisabled={isLoading || isSaving}
-              isRequired
-              error={has('assignee', errors)}
-              helperText={errors.assignee && errors.assignee.join(', ')}
-              isClearable
-            />
+            <Form errors={errors} onChange={setTask} task={task} />
           </div>
         </CardContent>
         <CardActions className={styles.actions}>
