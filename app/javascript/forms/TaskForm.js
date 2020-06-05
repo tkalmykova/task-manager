@@ -5,8 +5,7 @@ export default {
     return {
       name: null,
       description: null,
-      author: null,
-      assignee: null,
+      assignee: {},
       ...attributes,
     };
   },

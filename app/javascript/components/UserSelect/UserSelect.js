@@ -52,7 +52,7 @@ UserSelect.propTypes = {
   isDisabled: PropTypes.bool,
   isRequired: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.shape().isRequired]),
+  value: PropTypes.oneOfType([PropTypes.string.isRequired, UserPresenter.shape().isRequired]),
   helperText: PropTypes.string,
 };
 UserSelect.defaultProps = {
