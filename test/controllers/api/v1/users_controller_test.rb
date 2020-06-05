@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-import 'material-design-lite/material.js';
+
 
 
 class Api::V1::UsersControllerTest < ActionController::TestCase
