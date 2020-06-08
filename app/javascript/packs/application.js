@@ -1,3 +1,5 @@
+import 'src/application.css';
+
 import 'material-design-lite/material.js';
 
 require('@rails/ujs').start();
