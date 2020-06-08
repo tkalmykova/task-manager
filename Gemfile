@@ -5,17 +5,23 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+gem 'active_model_serializers'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jbuilder', '~> 2.7'
+gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'responders'
 gem 'sass-rails', '>= 6'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machines'
 gem 'state_machines-activerecord'
 gem 'webpacker', '~> 4.0'
+gem 'webpacker-react'
+gem 'js-routes'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
