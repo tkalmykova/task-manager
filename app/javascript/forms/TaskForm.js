@@ -19,6 +19,7 @@ export default {
     return {
       ...pick(pertmittedKeys, task),
       assigneeId: propOr(null, 'id', task.assignee),
+      authorId: propOr(null, 'id', task.author),
     };
   },
 };
