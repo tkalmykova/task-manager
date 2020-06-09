@@ -24,6 +24,7 @@ gem 'webpacker-react'
 gem 'js-routes'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rollbar'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

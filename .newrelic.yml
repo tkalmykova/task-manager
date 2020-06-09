@@ -1,0 +1,23 @@
+
+common: &default_settings
+  license_key: <%= ENV['NEWRELIC_KEY'] %>
+
+  app_name: TaskManager
+
+  log_level: info
+
+development:
+  <<: *default_settings
+  app_name: My Application (Development)
+
+test:
+  <<: *default_settings
+  # It doesn't make sense to report to New Relic from automated test runs.
+  monitor_mode: false
+
+staging:
+  <<: *default_settings
+  app_name: My Application (Staging)
+
+production:
+  <<: *default_settings
