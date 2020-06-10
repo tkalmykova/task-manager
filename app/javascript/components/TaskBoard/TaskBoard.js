@@ -159,8 +159,8 @@ const TaskBoard = () => {
     <>
       <Fab className={styles.addButton} color="primary" aria-label="add" onClick={handleOpenAddPopup}>
         <Icon>add_circle</Icon>
-        {mode === MODES.ADD && <AddPopup onCreateCard={handleTaskCreate} onClose={handleClose} />}
       </Fab>
+      {mode === MODES.ADD && <AddPopup onCreateCard={handleTaskCreate} onClose={handleClose} />}
       {mode === MODES.EDIT && (
         <EditPopup
           onLoadCard={loadTask}

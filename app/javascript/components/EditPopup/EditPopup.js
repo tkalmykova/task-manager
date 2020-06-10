@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Form from './components/Form';
+import TaskPresenter from 'presenters/TaskPresenter';
 
 import useStyles from './useStyles';
 
@@ -44,11 +45,10 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
     onCardDestroy(task).catch((error) => {
       setSaving(false);
 
-      alert(`Destrucion Failed! Error: ${error.message}`);
+      alert(`Destruction Failed! Error: ${error.message}`);
     });
   };
   const isLoading = isNil(task);
-
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -58,7 +58,11 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <CloseIcon />
             </IconButton>
           }
-          title={isLoading ? 'Your task is loading. Please be patient.' : `Task # ${task.id} [${task.name}]`}
+          title={
+            isLoading
+              ? 'Your task is loading. Please be patient.'
+              : `Task # ${TaskPresenter.id(task)} [${TaskPresenter.name(task)}]`
+          }
         />
         <CardContent>
           {isLoading ? (
