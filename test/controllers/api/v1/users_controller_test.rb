@@ -2,8 +2,6 @@
 
 require 'test_helper'
 
-
-
 class Api::V1::UsersControllerTest < ActionController::TestCase
   test 'should get show' do
     user = create(:user)

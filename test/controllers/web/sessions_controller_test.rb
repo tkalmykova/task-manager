@@ -2,7 +2,6 @@
 
 require 'test_helper'
 
-
 class Web::SessionsControllerTest < ActionController::TestCase
   setup do
     @password = generate(:password)
