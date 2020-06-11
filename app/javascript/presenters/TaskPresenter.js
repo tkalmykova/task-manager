@@ -9,9 +9,11 @@ export default new PropTypesPresenter({
   state: PropTypes.string,
   expired_at: PropTypes.string,
   assignee: UserPresenter.shape(),
-  transitions: PropTypes.arrayOf(PropTypes.shape({
-    event: PropTypes.string,
-    from: PropTypes.string,
-    to: PropTypes.string,
-  })),
+  transitions: PropTypes.arrayOf(
+    PropTypes.shape({
+      event: PropTypes.string,
+      from: PropTypes.string,
+      to: PropTypes.string,
+    }),
+  ),
 });
