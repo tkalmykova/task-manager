@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => '/admin/sidekiq'
 
-
   root to: 'web/boards#show'
 
   scope module: :web do
