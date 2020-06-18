@@ -15,7 +15,6 @@ class ActiveSupport::TestCase
   include AuthHelper
   include ActionMailer::TestHelper
 
-
   parallelize(workers: :number_of_processors)
   fixtures :all
 end
