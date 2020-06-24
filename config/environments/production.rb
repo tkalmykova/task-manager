@@ -21,6 +21,7 @@ Rails.application.configure do
   end
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "vast-cliffs-97505.herokuapp.com" }
   config.action_mailer.smtp_settings = {
     user_name: ENV['MAILER_USERNAME'],
     password: ENV['MAILER_PASSWORD'],

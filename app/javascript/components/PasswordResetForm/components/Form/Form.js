@@ -7,7 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 
-const PasswordResetForm = ({ onSubmit }) => {
+const Form = ({ onSubmit }) => {
   const styles = useStyles();
 
   return (
@@ -34,8 +34,8 @@ const PasswordResetForm = ({ onSubmit }) => {
   );
 };
 
-PasswordResetForm.propTypes = {
+Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default PasswordResetForm;
+export default Form;

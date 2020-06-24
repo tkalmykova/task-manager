@@ -1,9 +1,9 @@
-import PasswordResetForm from './components/PasswordResetForm';
+import Form from './components/Form';
 import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import useStyles from './useStyles';
 
-const PasswordReset = () => {
+const PasswordResetForm = () => {
   const [isResetRequested, setIsResetRequested] = useState(false);
   const styles = useStyles();
   const handleSubmit = () => {
@@ -15,9 +15,9 @@ const PasswordReset = () => {
       {isResetRequested ? (
         <Card className={styles.card}> Check your inbox for the next steps.</Card>
       ) : (
-        <PasswordResetForm onSubmit={handleSubmit} />
+        <Form onSubmit={handleSubmit} />
       )}
     </>
   );
 };
-export default PasswordReset;
+export default PasswordResetForm;

@@ -497,6 +497,12 @@ Based on Rails 6.0.2.2 routes of App::Application
 // admin_users => /admin/users(.:format)
   // function(options)
   adminUsersPath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"admin",false],[2,[7,"/",false],[2,[6,"users",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]),
+// api_v1_password_reset => /api/v1/password_reset(.:format)
+  // function(options)
+  apiV1PasswordResetPath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"api",false],[2,[7,"/",false],[2,[6,"v1",false],[2,[7,"/",false],[2,[6,"password_reset",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]),
+// api_v1_password_update => /api/v1/password_update(.:format)
+  // function(options)
+  apiV1PasswordUpdatePath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"api",false],[2,[7,"/",false],[2,[6,"v1",false],[2,[7,"/",false],[2,[6,"password_update",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]),
 // api_v1_task => /api/v1/tasks/:id(.:format)
   // function(id, options)
   apiV1TaskPath: Utils.route([["id",true],["format",false]], {}, [2,[7,"/",false],[2,[6,"api",false],[2,[7,"/",false],[2,[6,"v1",false],[2,[7,"/",false],[2,[6,"tasks",false],[2,[7,"/",false],[2,[3,"id",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]]]),
@@ -521,6 +527,21 @@ Based on Rails 6.0.2.2 routes of App::Application
 // edit_rails_conductor_inbound_email => /rails/conductor/action_mailbox/inbound_emails/:id/edit(.:format)
   // function(id, options)
   editRailsConductorInboundEmailPath: Utils.route([["id",true],["format",false]], {}, [2,[7,"/",false],[2,[6,"rails",false],[2,[7,"/",false],[2,[6,"conductor",false],[2,[7,"/",false],[2,[6,"action_mailbox",false],[2,[7,"/",false],[2,[6,"inbound_emails",false],[2,[7,"/",false],[2,[3,"id",false],[2,[7,"/",false],[2,[6,"edit",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]]]]]]]),
+// letter_opener_web => /letter_opener
+  // function(options)
+  letterOpenerWebPath: Utils.route([], {}, [2,[7,"/",false],[6,"letter_opener",false]]),
+// letter_opener_web.clear_letters => /letter_opener/clear(.:format)
+  // function(options)
+  letterOpenerWebClearLettersPath: Utils.route([["format",false]], {}, [2,[2,[2,[7,"/",false],[6,"letter_opener",false]],[7,"/",false]],[2,[6,"clear",false],[1,[2,[8,".",false],[3,"format",false]],false]]]),
+// letter_opener_web.delete_letter => /letter_opener/:id(.:format)
+  // function(id, options)
+  letterOpenerWebDeleteLetterPath: Utils.route([["id",true],["format",false]], {}, [2,[2,[2,[7,"/",false],[6,"letter_opener",false]],[7,"/",false]],[2,[3,"id",false],[1,[2,[8,".",false],[3,"format",false]],false]]]),
+// letter_opener_web.letters => /letter_opener/
+  // function(options)
+  letterOpenerWebLettersPath: Utils.route([], {}, [2,[2,[7,"/",false],[6,"letter_opener",false]],[7,"/",false]]),
+// letter_opener_web.letter => /letter_opener/:id(/:style)(.:format)
+  // function(id, options)
+  letterOpenerWebLetterPath: Utils.route([["id",true],["style",false],["format",false]], {}, [2,[2,[2,[7,"/",false],[6,"letter_opener",false]],[7,"/",false]],[2,[3,"id",false],[2,[1,[2,[7,"/",false],[3,"style",false]],false],[1,[2,[8,".",false],[3,"format",false]],false]]]]),
 // new_admin_user => /admin/users/new(.:format)
   // function(options)
   newAdminUserPath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"admin",false],[2,[7,"/",false],[2,[6,"users",false],[2,[7,"/",false],[2,[6,"new",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]),
@@ -533,6 +554,12 @@ Based on Rails 6.0.2.2 routes of App::Application
 // new_session => /session/new(.:format)
   // function(options)
   newSessionPath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"session",false],[2,[7,"/",false],[2,[6,"new",false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]),
+// password_reset => /password_reset(.:format)
+  // function(options)
+  passwordResetPath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"password_reset",false],[1,[2,[8,".",false],[3,"format",false]],false]]]),
+// password_update => /password_update(.:format)
+  // function(options)
+  passwordUpdatePath: Utils.route([["format",false]], {}, [2,[7,"/",false],[2,[6,"password_update",false],[1,[2,[8,".",false],[3,"format",false]],false]]]),
 // rails_blob_representation => /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)
   // function(signed_blob_id, variation_key, filename, options)
   railsBlobRepresentationPath: Utils.route([["signed_blob_id",true],["variation_key",true],["filename",true],["format",false]], {}, [2,[7,"/",false],[2,[6,"rails",false],[2,[7,"/",false],[2,[6,"active_storage",false],[2,[7,"/",false],[2,[6,"representations",false],[2,[7,"/",false],[2,[3,"signed_blob_id",false],[2,[7,"/",false],[2,[3,"variation_key",false],[2,[7,"/",false],[2,[5,[3,"filename",false],false],[1,[2,[8,".",false],[3,"format",false]],false]]]]]]]]]]]]]),

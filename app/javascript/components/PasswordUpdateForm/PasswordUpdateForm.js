@@ -23,7 +23,7 @@ const PasswordUpdateForm = () => {
             label="New Password"
             required
             margin="dense"
-            variant="filled"
+            // variant="filled"
           />
           <TextField
             // error={has('email', errors)}
@@ -33,7 +33,7 @@ const PasswordUpdateForm = () => {
             label="Confirm new password"
             required
             margin="dense"
-            variant="filled"
+            // variant="filled"
           />
           <Button className={styles.button} variant="contained" color="primary">
             Save Password
