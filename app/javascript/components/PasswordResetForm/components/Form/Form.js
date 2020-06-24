@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useStyles from './useStyles';
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +8,16 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 
 const Form = ({ onSubmit }) => {
+  const [email, setEmail] = useState('');
+
+  const handleChangeEmail = ({ target: { value } }) => {
+    setEmail(value);
+  };
+
+  const handleSubmit = () => {
+    onSubmit(email);
+  };
+
   const styles = useStyles();
 
   return (
@@ -15,17 +25,8 @@ const Form = ({ onSubmit }) => {
       <Card className={styles.root}>
         <CardHeader className={styles.card} title="Reset Password" />
         <CardContent>
-          <TextField
-            id="outlined-basic"
-            // error={has('email', errors)}
-            // helperText={errors.email}
-            // onChange={handleChangeTextField('enail')}
-            // value={TaskPresenter.name(task)}
-            label="Email"
-            required
-            margin="dense"
-          />
-          <Button className={styles.button} variant="contained" color="primary" onClick={onSubmit}>
+          <TextField onChange={handleChangeEmail} value={email} label="Email" required margin="dense" />
+          <Button className={styles.button} variant="contained" color="primary" onClick={handleSubmit}>
             Reset Password
           </Button>
         </CardContent>

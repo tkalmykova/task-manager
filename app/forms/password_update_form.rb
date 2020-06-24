@@ -14,6 +14,8 @@ class PasswordUpdateForm
   validate :token_valid?
 
   def user
+    return unless token.present?
+
     User.find_by(password_reset_token: token)
   end
 

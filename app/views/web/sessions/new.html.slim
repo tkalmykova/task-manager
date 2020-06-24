@@ -3,7 +3,7 @@ h4 Log in
   p
     = f.input :email
     = f.input :password
-
-  a href="web/password_reset" Forgot your password?
   p
     = f.button  :submit, "Sign in"
+
+  = link_to("Forgot your password?", password_reset_path)

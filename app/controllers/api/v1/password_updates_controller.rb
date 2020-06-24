@@ -7,6 +7,8 @@ class Api::V1::PasswordUpdatesController < Api::V1::ApplicationController
 
     if password_update_form.valid?
       password_update_form.update_password
+      head(:ok)
+      return
     end
 
     respond_with(password_update_form)
