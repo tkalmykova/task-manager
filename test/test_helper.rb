@@ -2,6 +2,7 @@
 
 require 'simplecov'
 require 'coveralls'
+require 'sidekiq/testing'
 
 SimpleCov.start
 Coveralls.wear!('rails')

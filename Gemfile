@@ -25,6 +25,7 @@ gem 'js-routes'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rollbar'
 gem 'newrelic_rpm'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,6 +39,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener'
   gem 'letter_opener_web'
+
 end
 
 group :test do
