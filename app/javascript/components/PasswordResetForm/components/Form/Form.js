@@ -21,12 +21,12 @@ const Form = ({ onSubmit }) => {
   const styles = useStyles();
 
   return (
-    <form className={styles.card}>
-      <Card className={styles.root}>
-        <CardHeader className={styles.card} title="Reset Password" />
-        <CardContent>
+    <form className={styles.root}>
+      <Card className={styles.card}>
+        <CardHeader title="Reset Password" />
+        <CardContent className={styles.content}>
           <TextField onChange={handleChangeEmail} value={email} label="Email" required margin="dense" />
-          <Button className={styles.button} variant="contained" color="primary" onClick={handleSubmit}>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             Reset Password
           </Button>
         </CardContent>

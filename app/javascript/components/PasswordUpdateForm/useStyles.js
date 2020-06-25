@@ -1,32 +1,19 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
-  card: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    outline: 0,
-    flexDirection: 'column',
-  },
-
   root: {
     width: 465,
   },
-  content: {
+  alert: {
     display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-
-  button: {
-    display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
+    outline: 0,
   },
-  header: {
+  container: {
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'center',
+    outline: 0,
   },
 }));
 

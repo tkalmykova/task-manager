@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import useStyles from './useStyles';
 import PasswordUpdateRepository from 'repositories/PasswordUpdateRepository';
 import Form from './components/Form';
-import Card from '@material-ui/core/Card';
+import Alert from '@material-ui/lab/Alert';
 
 const PasswordUpdateForm = () => {
   const styles = useStyles();
@@ -18,13 +18,18 @@ const PasswordUpdateForm = () => {
     });
   };
   return (
-    <>
-      {isUpdateDone ? (
-        <Card className={styles.card}> Your password updated successfully.</Card>
-      ) : (
-        <Form onSubmit={handleSubmit} />
-      )}
-    </>
+    <div className={styles.container}>
+      <div className={styles.root}>
+        {isUpdateDone ? (
+          <Alert severity="success" className={styles.alert}>
+            {' '}
+            Your password updated successfully.
+          </Alert>
+        ) : (
+          <Form onSubmit={handleSubmit} />
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -23,9 +23,9 @@ const Form = ({ onSubmit }) => {
   const styles = useStyles();
 
   return (
-    <form className={styles.card}>
-      <Card className={styles.root}>
-        <CardHeader className={styles.card} title="Reset Password" />
+    <form className={styles.root}>
+      <Card className={styles.card}>
+        <CardHeader title="Update Password" />
         <CardContent className={styles.content}>
           <TextField
             error={has('password', errors)}
@@ -45,7 +45,7 @@ const Form = ({ onSubmit }) => {
             required
             margin="dense"
           />
-          <Button className={styles.button} variant="contained" color="primary" onClick={handleSubmit}>
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             Save Password
           </Button>
         </CardContent>
