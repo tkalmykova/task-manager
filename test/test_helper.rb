@@ -19,3 +19,4 @@ class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
   fixtures :all
 end
+Sidekiq::Testing.inline!
