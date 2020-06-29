@@ -28,6 +28,7 @@ gem 'newrelic_rpm'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sidekiq-throttled'
+gem 'sidekiq-unique-jobs', '~> 6.0.13'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,7 +42,6 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'letter_opener'
   gem 'letter_opener_web'
-
 end
 
 group :test do
