@@ -16,7 +16,15 @@ import TaskPresenter from 'presenters/TaskPresenter';
 
 import useStyles from './useStyles';
 
-const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate }) => {
+const EditPopup = ({
+  cardId,
+  onClose,
+  onCardDestroy,
+  onLoadCard,
+  onCardUpdate,
+  onCardImageUpdate,
+  onCardImageRemoval,
+}) => {
   const [task, setTask] = useState(null);
   const [isSaving, setSaving] = useState(false);
   const [errors, setErrors] = useState({});
@@ -48,7 +56,28 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
       alert(`Destruction Failed! Error: ${error.message}`);
     });
   };
+
+  const handleCardImageUpdate = ({ attachment }) => {
+    setSaving(true);
+
+    onCardImageUpdate(task, attachment).catch((error) => {
+      setSaving(false);
+
+      alert(`Image Update Failed! Error: ${error.message}`);
+    });
+  };
+  const handleCardImageRemoval = () => {
+    setSaving(true);
+
+    onCardImageRemoval(task).catch((error) => {
+      setSaving(false);
+
+      alert(`Image removal Failed! Error: ${error.message}`);
+    });
+  };
+
   const isLoading = isNil(task);
+
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -70,7 +99,13 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <CircularProgress />
             </div>
           ) : (
-            <Form errors={errors} onChange={setTask} task={task} />
+            <Form
+              errors={errors}
+              onChange={setTask}
+              onImageAttach={handleCardImageUpdate}
+              onImageRemoval={handleCardImageRemoval}
+              task={task}
+            />
           )}
         </CardContent>
         <CardActions className={styles.actions}>
@@ -104,6 +139,8 @@ EditPopup.propTypes = {
   onCardDestroy: PropTypes.func.isRequired,
   onLoadCard: PropTypes.func.isRequired,
   onCardUpdate: PropTypes.func.isRequired,
+  onCardImageUpdate: PropTypes.func.isRequired,
+  onCardImageRemoval: PropTypes.func.isRequired,
 };
 
 export default EditPopup;

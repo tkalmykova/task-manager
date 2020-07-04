@@ -152,6 +152,20 @@ const TaskBoard = () => {
     });
   };
 
+  const handleImageAttach = (task, attachment) => {
+    return TasksRepository.attachImage(task.id, attachment).then(() => {
+      loadColumnInitial(task.state);
+      handleClose();
+    });
+  };
+
+  const handleImageRemoval = (task) => {
+    return TasksRepository.removeImage(task.id).then(() => {
+      loadColumnInitial(task.state);
+      handleClose();
+    });
+  };
+
   useEffect(() => loadBoard(), []);
   useEffect(() => generateBoard(), [boardCards]);
 
@@ -166,6 +180,8 @@ const TaskBoard = () => {
           onLoadCard={loadTask}
           onCardDestroy={handleTaskDestroy}
           onCardUpdate={handleTaskUpdate}
+          onCardImageUpdate={handleImageAttach}
+          onCardImageRemoval={handleImageRemoval}
           onClose={handleClose}
           cardId={openedTaskId}
         />

@@ -7,7 +7,8 @@ export default new PropTypesPresenter({
   name: PropTypes.string,
   description: PropTypes.string,
   state: PropTypes.string,
-  expired_at: PropTypes.string,
+  expiredAt: PropTypes.string,
+  imageUrl: PropTypes.string,
   assignee: UserPresenter.shape(),
   transitions: PropTypes.arrayOf(
     PropTypes.shape({
