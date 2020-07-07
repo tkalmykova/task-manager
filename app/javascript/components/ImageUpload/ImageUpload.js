@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { isNil, path } from 'ramda';
 import ReactCrop, { makeAspectCrop } from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 import useStyles from './useStyles';
 
 const DEFAULT_CROP_PARAMS = {
   x: 0,
   y: 0,
-  aspect: 1,
+  aspect: 0,
   width: 100,
   height: 100,
 };
@@ -22,7 +23,7 @@ const ImageUpload = ({ onUpload }) => {
   const [file, changeFile] = useState(null);
   const [image, changeImage] = useState(null);
 
-  const handleCropComplete = (newCrop, newPercentageCrop) => {
+  const handleCropComplete = (_, newPercentageCrop) => {
     changeCropParams(newPercentageCrop);
   };
 

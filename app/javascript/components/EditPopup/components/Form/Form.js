@@ -17,18 +17,6 @@ const Form = ({ errors, onChange, onImageAttach, onImageRemoval, task }) => {
 
   return (
     <form className={styles.root}>
-      {isNil(imageUrl) ? (
-        <div className={styles.imageUploadContainer}>
-          <ImageUpload onUpload={onImageAttach} />
-        </div>
-      ) : (
-        <div className={styles.previewContainer}>
-          <img className={styles.preview} src={imageUrl} alt="Attachment" />
-          <Button variant="contained" size="small" color="primary" onClick={onImageRemoval}>
-            Remove image
-          </Button>
-        </div>
-      )}
       <TextField
         error={has('name', errors)}
         helperText={errors.name}
@@ -57,6 +45,18 @@ const Form = ({ errors, onChange, onImageAttach, onImageRemoval, task }) => {
         helperText={errors.assignee && errors.assignee.join(', ')}
         isClearable
       />
+      {isNil(imageUrl) ? (
+        <div className={styles.imageUploadContainer}>
+          <ImageUpload onUpload={onImageAttach} />
+        </div>
+      ) : (
+        <div className={styles.previewContainer}>
+          <img className={styles.preview} src={imageUrl} alt="Attachment" />
+          <Button variant="contained" size="small" color="primary" onClick={onImageRemoval}>
+            Remove image
+          </Button>
+        </div>
+      )}
     </form>
   );
 };

@@ -4,6 +4,7 @@ const useStyles = makeStyles(() => ({
   crop: {
     maxHeight: 300,
     maxWidth: 300,
+    marginBottom: 10,
   },
 }));
 

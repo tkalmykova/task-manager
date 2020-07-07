@@ -5,6 +5,13 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  preview: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 150,
+    height: 150,
+    marginBottom: 10,
+  },
 }));
 
 export default useStyles;
