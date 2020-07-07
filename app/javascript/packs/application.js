@@ -8,5 +8,7 @@ require('channels');
 
 import WebpackerReact from 'webpacker-react';
 import TaskBoard from 'components/TaskBoard';
+import PasswordResetForm from 'components/PasswordResetForm';
+import PasswordUpdateForm from 'components/PasswordUpdateForm';
 
-WebpackerReact.setup({ TaskBoard });
+WebpackerReact.setup({ TaskBoard, PasswordResetForm, PasswordUpdateForm });

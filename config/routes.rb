@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   scope module: :web do
     resource :board, only: :show
+    resource :password_reset, only: :show
+    resource :password_update, only: :show
     resource :session, only: %i[new create destroy]
     resources :developers, only: %i[new create]
   end
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tasks, only: %i[index show create update destroy]
       resources :users, only: [:index, :show]
+      resource :password_reset, only: :create
+      resource :password_update, only: :update
     end
   end
 end

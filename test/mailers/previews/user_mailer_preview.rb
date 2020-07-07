@@ -22,4 +22,12 @@ class UserMailerPreview < ActionMailer::Preview
 
     UserMailer.with(params).task_updated
   end
+
+  def password_reset
+    user = User.first
+    user.generate_password_reset_token!
+    params = { user: user }
+
+    UserMailer.with(params).password_reset
+  end
 end
