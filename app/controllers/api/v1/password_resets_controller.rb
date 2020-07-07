@@ -10,7 +10,7 @@ class Api::V1::PasswordResetsController < Api::V1::ApplicationController
 
     user.generate_password_reset_token!
 
-    UserMailer.with(user: user).password_reset.deliver_now
+    UserMailer.with(user: user).password_reset.deliver_later
 
     head(:created)
   end

@@ -2,6 +2,7 @@
 
 require 'simplecov'
 require 'coveralls'
+require 'sidekiq/testing'
 
 SimpleCov.start
 Coveralls.wear!('rails')
@@ -18,3 +19,4 @@ class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
   fixtures :all
 end
+Sidekiq::Testing.inline!
