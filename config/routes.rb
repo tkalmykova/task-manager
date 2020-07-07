@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   root to: 'web/boards#show'
 
   scope module: :web do
@@ -20,3 +24,4 @@ Rails.application.routes.draw do
     end
   end
 end
+

@@ -37,6 +37,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true
@@ -46,4 +47,7 @@ Rails.application.configure do
     Bullet.rollbar = true
     Bullet.add_footer = true
   end
+  config.action_mailer.default_url_options = { protocol: 'http', host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_caching = true
 end

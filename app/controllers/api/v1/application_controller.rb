@@ -3,6 +3,8 @@
 class Api::V1::ApplicationController < Api::ApplicationController
   include AuthHelper
 
+  before_action :authenticate_user!
+
   RANSACK_DEFAULT_SORT = 'id ASC'
 
   def build_meta(collection)
