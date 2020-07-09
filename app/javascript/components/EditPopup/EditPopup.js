@@ -22,11 +22,11 @@ const EditPopup = ({
   onCardDestroy,
   onLoadCard,
   onCardUpdate,
-  onCardImageUpdate,
+  onCardImageAttach,
   onCardImageRemoval,
 }) => {
   const [task, setTask] = useState(null);
-  const [isSaving, setSaving] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const styles = useStyles();
 
@@ -35,10 +35,10 @@ const EditPopup = ({
   }, []);
 
   const handleCardUpdate = () => {
-    setSaving(true);
+    setSubmitting(true);
 
     onCardUpdate(task).catch((error) => {
-      setSaving(false);
+      setSubmitting(false);
       setErrors(error || {});
 
       if (error instanceof Error) {
@@ -48,29 +48,29 @@ const EditPopup = ({
   };
 
   const handleCardDestroy = () => {
-    setSaving(true);
+    setSubmitting(true);
 
     onCardDestroy(task).catch((error) => {
-      setSaving(false);
+      setSubmitting(false);
 
       alert(`Destruction Failed! Error: ${error.message}`);
     });
   };
 
-  const handleCardImageUpdate = ({ attachment }) => {
-    setSaving(true);
+  const handleCardImageAttach = ({ attachment }) => {
+    setSubmitting(true);
 
-    onCardImageUpdate(task, attachment).catch((error) => {
-      setSaving(false);
+    onCardImageAttach(task, attachment).catch((error) => {
+      setSubmitting(false);
 
-      alert(`Image Update Failed! Error: ${error.message}`);
+      alert(`Image Attach Failed! Error: ${error.message}`);
     });
   };
   const handleCardImageRemoval = () => {
-    setSaving(true);
+    setSubmitting(true);
 
     onCardImageRemoval(task).catch((error) => {
-      setSaving(false);
+      setSubmitting(false);
 
       alert(`Image removal Failed! Error: ${error.message}`);
     });
@@ -102,7 +102,7 @@ const EditPopup = ({
             <Form
               errors={errors}
               onChange={setTask}
-              onImageAttach={handleCardImageUpdate}
+              onImageAttach={handleCardImageAttach}
               onImageRemoval={handleCardImageRemoval}
               task={task}
             />
@@ -110,7 +110,7 @@ const EditPopup = ({
         </CardContent>
         <CardActions className={styles.actions}>
           <Button
-            disabled={isLoading || isSaving}
+            disabled={isLoading || isSubmitting}
             onClick={handleCardUpdate}
             size="small"
             variant="contained"
@@ -119,7 +119,7 @@ const EditPopup = ({
             Update
           </Button>
           <Button
-            disabled={isLoading || isSaving}
+            disabled={isLoading || isSubmitting}
             onClick={handleCardDestroy}
             size="small"
             variant="contained"
@@ -139,7 +139,7 @@ EditPopup.propTypes = {
   onCardDestroy: PropTypes.func.isRequired,
   onLoadCard: PropTypes.func.isRequired,
   onCardUpdate: PropTypes.func.isRequired,
-  onCardImageUpdate: PropTypes.func.isRequired,
+  onCardImageAttach: PropTypes.func.isRequired,
   onCardImageRemoval: PropTypes.func.isRequired,
 };
 

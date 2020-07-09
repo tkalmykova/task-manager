@@ -180,7 +180,7 @@ const TaskBoard = () => {
           onLoadCard={loadTask}
           onCardDestroy={handleTaskDestroy}
           onCardUpdate={handleTaskUpdate}
-          onCardImageUpdate={handleImageAttach}
+          onCardImageAttach={handleImageAttach}
           onCardImageRemoval={handleImageRemoval}
           onClose={handleClose}
           cardId={openedTaskId}
