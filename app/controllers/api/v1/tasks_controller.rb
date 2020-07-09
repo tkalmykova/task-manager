@@ -31,7 +31,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   def update
     task = Task.find(params[:id])
     if task.update(task_params)
-      SendTaskCreateNotificationJob.perform_async(task.id)
+      SendTaskUpdateNotificationJob.perform_async(task.id)
     end
 
     respond_with(task, serializer: TaskSerializer)
@@ -40,7 +40,7 @@ class Api::V1::TasksController < Api::V1::ApplicationController
   def destroy
     task = Task.find(params[:id])
     if task.destroy
-      SendTaskCreateNotificationJob.perform_async(task.id)
+      SendTaskDestroyNotificationJob.perform_async(current_user.id, task.id)
     end
 
     respond_with(task)

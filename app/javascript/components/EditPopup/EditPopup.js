@@ -16,9 +16,17 @@ import TaskPresenter from 'presenters/TaskPresenter';
 
 import useStyles from './useStyles';
 
-const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate }) => {
+const EditPopup = ({
+  cardId,
+  onClose,
+  onCardDestroy,
+  onLoadCard,
+  onCardUpdate,
+  onCardImageAttach,
+  onCardImageRemoval,
+}) => {
   const [task, setTask] = useState(null);
-  const [isSaving, setSaving] = useState(false);
+  const [isSubmitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const styles = useStyles();
 
@@ -27,10 +35,10 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   }, []);
 
   const handleCardUpdate = () => {
-    setSaving(true);
+    setSubmitting(true);
 
     onCardUpdate(task).catch((error) => {
-      setSaving(false);
+      setSubmitting(false);
       setErrors(error || {});
 
       if (error instanceof Error) {
@@ -40,15 +48,36 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
   };
 
   const handleCardDestroy = () => {
-    setSaving(true);
+    setSubmitting(true);
 
     onCardDestroy(task).catch((error) => {
-      setSaving(false);
+      setSubmitting(false);
 
       alert(`Destruction Failed! Error: ${error.message}`);
     });
   };
+
+  const handleCardImageAttach = ({ attachment }) => {
+    setSubmitting(true);
+
+    onCardImageAttach(task, attachment).catch((error) => {
+      setSubmitting(false);
+
+      alert(`Image Attach Failed! Error: ${error.message}`);
+    });
+  };
+  const handleCardImageRemoval = () => {
+    setSubmitting(true);
+
+    onCardImageRemoval(task).catch((error) => {
+      setSubmitting(false);
+
+      alert(`Image removal Failed! Error: ${error.message}`);
+    });
+  };
+
   const isLoading = isNil(task);
+
   return (
     <Modal className={styles.modal} open onClose={onClose}>
       <Card className={styles.root}>
@@ -70,12 +99,18 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
               <CircularProgress />
             </div>
           ) : (
-            <Form errors={errors} onChange={setTask} task={task} />
+            <Form
+              errors={errors}
+              onChange={setTask}
+              onImageAttach={handleCardImageAttach}
+              onImageRemoval={handleCardImageRemoval}
+              task={task}
+            />
           )}
         </CardContent>
         <CardActions className={styles.actions}>
           <Button
-            disabled={isLoading || isSaving}
+            disabled={isLoading || isSubmitting}
             onClick={handleCardUpdate}
             size="small"
             variant="contained"
@@ -84,7 +119,7 @@ const EditPopup = ({ cardId, onClose, onCardDestroy, onLoadCard, onCardUpdate })
             Update
           </Button>
           <Button
-            disabled={isLoading || isSaving}
+            disabled={isLoading || isSubmitting}
             onClick={handleCardDestroy}
             size="small"
             variant="contained"
@@ -104,6 +139,8 @@ EditPopup.propTypes = {
   onCardDestroy: PropTypes.func.isRequired,
   onLoadCard: PropTypes.func.isRequired,
   onCardUpdate: PropTypes.func.isRequired,
+  onCardImageAttach: PropTypes.func.isRequired,
+  onCardImageRemoval: PropTypes.func.isRequired,
 };
 
 export default EditPopup;

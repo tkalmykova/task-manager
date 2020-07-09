@@ -10,5 +10,8 @@ module App
     config.load_defaults 6.0
     config.assets.paths << Rails.root.join('node_modules')
     config.active_job.queue_adapter = :sidekiq
+
+    routes.default_url_options = { host: ENV['APP_HOST'] }
+    config.action_mailer.default_url_options = { host: ENV['APP_HOST'] }
   end
 end
